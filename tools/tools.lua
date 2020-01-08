@@ -20,13 +20,16 @@ tools:setMenu(
             fn = function ()
 
                 hs.task.new("/usr/local/bin/brew", function (code, stdout, stderr)
-                    hs.notify.new({title="brew update", informativeText=stdout}):send()
+                    hs.notify.new({title="brew update"}):send()
+                    print("brew update", stdout)
 
                     hs.task.new("/usr/local/bin/brew", function (code, stdout, stderr)
-                        hs.notify.new({title="brew upgrade", informativeText=stdout}):send()
+                        hs.notify.new({title="brew upgrade"}):send()
+                        print("brew upgrade", stdout)
 
                         hs.task.new("/usr/local/bin/brew", function (code, stdout, stderr)
-                            hs.notify.new({title="brew cask upgrade", informativeText=stdout}):send()
+                            hs.notify.new({title="brew cask upgrade"}):send()
+                            print("brew cask upgrade", stdout)
         
                         end,{"cask", "upgrade"}):start()
                     end,{"upgrade"}):start()
