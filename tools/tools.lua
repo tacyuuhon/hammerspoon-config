@@ -21,15 +21,15 @@ tools:setMenu(
 
                 hs.task.new("/usr/local/bin/brew", function (code, stdout, stderr)
                     hs.notify.new({title="brew update"}):send()
-                    print("brew update", stdout)
+                    print("#1. brew update", stdout)
 
                     hs.task.new("/usr/local/bin/brew", function (code, stdout, stderr)
                         hs.notify.new({title="brew upgrade"}):send()
-                        print("brew upgrade", stdout)
+                        print("#2. brew upgrade", stdout)
 
                         hs.task.new("/usr/local/bin/brew", function (code, stdout, stderr)
                             hs.notify.new({title="brew cask upgrade"}):send()
-                            print("brew cask upgrade", stdout)
+                            print("#3. brew cask upgrade", stdout)
         
                         end,{"cask", "upgrade"}):start()
                     end,{"upgrade"}):start()
